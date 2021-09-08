@@ -1,3 +1,6 @@
+- [go-utils](#go-utils)
+  - [1. Utils package](#1-utils-package)
+    - [1.1 logger](#11-logger)
 # go-utils
 In my free time, I will learn new knowledge about Golang and make notes on this project, or more simply, I will write my own components that can be reused for many different projects. This helped me review my knowledge of Golang as well as gain more experience on how to use this language.
 
