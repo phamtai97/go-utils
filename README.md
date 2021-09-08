@@ -1,11 +1,13 @@
-- [go-utils](#go-utils)
-  - [1. Utils package](#1-utils-package)
-    - [1.1 logger](#11-logger)
 # go-utils
+- [go-utils](#go-utils)
+  - [1. Overview](#1-overview)
+  - [2. Utils package](#2-utils-package)
+    - [2.1 logger](#21-logger)
+## 1. Overview
 In my free time, I will learn new knowledge about Golang and make notes on this project, or more simply, I will write my own components that can be reused for many different projects. This helped me review my knowledge of Golang as well as gain more experience on how to use this language.
 
-## 1. Utils package
-### 1.1 [logger](./utils/logger/logger.go) 
+## 2. Utils package
+### 2.1 [logger](./utils/logger/logger.go) 
 - I have wrapped the [zap](https://github.com/uber-go/zap) library for easy use in projects. Why zap? Because it is very [fast](https://github.com/uber-go/zap#performance).
 - How to use? 
 - Fisrtly, we install zap package.
