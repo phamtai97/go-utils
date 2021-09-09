@@ -72,7 +72,7 @@ func NewProductionConfig(isUseFile bool, filePath string) Config {
 	}
 }
 
-func InitLogger(cfg Config) error {
+func Init(cfg Config) error {
 	if err := validateConfig(cfg); err != nil {
 		return err
 	}
@@ -89,13 +89,13 @@ func InitLogger(cfg Config) error {
 	return nil
 }
 
-func InitProductionLogger(filePath string) error {
+func InitProduction(filePath string) error {
 	isUseFile := false
 	if len(filePath) > 0 {
 		isUseFile = true
 	}
 
-	return InitLogger(NewProductionConfig(isUseFile, filePath))
+	return Init(NewProductionConfig(isUseFile, filePath))
 }
 
 func Sync() error {

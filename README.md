@@ -23,10 +23,10 @@ go get -u go.uber.org/zap
 ...
 func main(){
     // write log to console
-    // logger.InitProductionLogger("")
+    // logger.InitProduction("")
 
     // write log to logs.log file
-    if err := logger.InitProductionLogger("./logs.log"); err != nil {
+    if err := logger.InitProduction("./logs.log"); err != nil {
         fmt.Printf("Failed to init logger: %v\n", err)
     }
     defer logger.Sync()

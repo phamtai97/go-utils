@@ -69,7 +69,7 @@ func TestInitProductionLogger_SimpleInput_Success(t *testing.T) {
 	assert := assert.New(t)
 
 	// WHEN
-	err := InitProductionLogger("./logger.log")
+	err := InitProduction("./logger.log")
 
 	// THEN
 	assert.Nil(err)
@@ -154,7 +154,7 @@ func TestInitLogger_MultipleCase_Success(t *testing.T) {
 
 	for _, table := range tables {
 		// WHEN
-		err := InitLogger(table.config)
+		err := Init(table.config)
 
 		// THEN
 		if table.isSuccess {
@@ -257,7 +257,7 @@ func TestLogger_Parallel_Success(t *testing.T) {
 }
 
 func BenchmarkLoggerInfo(b *testing.B) {
-	InitLogger(NewDefaultConfig())
+	Init(NewDefaultConfig())
 	b.ResetTimer()
 	b.RunParallel(func(pb *testing.PB) {
 		for pb.Next() {

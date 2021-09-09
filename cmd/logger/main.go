@@ -40,13 +40,13 @@ func main() {
 	// cfg := logger.NewProductionConfig("")
 
 	// Can init logger with simple line
-	// logger.InitProductionLogger("./logs.log")
+	// logger.InitProduction("./logs.log")
 
 	cfg := logger.Config{
 		Level: logger.DEBUG,
 	}
 
-	if err := logger.InitLogger(cfg); err != nil {
+	if err := logger.Init(cfg); err != nil {
 		fmt.Printf("Failed to init logger: %v\n", err)
 	}
 	defer logger.Sync()
