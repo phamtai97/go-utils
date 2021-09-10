@@ -34,6 +34,7 @@ func TestNewDefaultConfig_SimpleInput_Success(t *testing.T) {
 
 func TestNewProductionConfig_MultipleCase_Success(t *testing.T) {
 	// GIVEN
+	assert := assert.New(t)
 	tables := []struct {
 		isUseFile bool
 		filePath  string
@@ -43,7 +44,6 @@ func TestNewProductionConfig_MultipleCase_Success(t *testing.T) {
 		{true, ""},
 		{true, "./abc.log"},
 	}
-	assert := assert.New(t)
 
 	for _, table := range tables {
 		// WHEN
@@ -76,6 +76,7 @@ func TestInitProductionLogger_SimpleInput_Success(t *testing.T) {
 }
 func TestInitLogger_MultipleCase_Success(t *testing.T) {
 	// GIVEN
+	assert := assert.New(t)
 	tables := []struct {
 		config        Config
 		isSuccess     bool
@@ -150,7 +151,6 @@ func TestInitLogger_MultipleCase_Success(t *testing.T) {
 				},
 			}, false, "File path is invalid"},
 	}
-	assert := assert.New(t)
 
 	for _, table := range tables {
 		// WHEN
@@ -178,6 +178,7 @@ func (u *user) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 
 func TestLoggerDebug_MultipleCase_Success(t *testing.T) {
 	// GIVEN
+	assert := assert.New(t)
 	fields := []zap.Field{
 		zap.String("abc@xyz", "xyz@abc"),
 		zap.Strings("abc@xyz", []string{"123@abc", "456@abc 789@", "123", "~!@#$%^&*(){}:;<>?,.-_=/``+"}),
@@ -206,7 +207,6 @@ func TestLoggerDebug_MultipleCase_Success(t *testing.T) {
 		zap.Duration("duration", 10*time.Second),
 	}
 
-	assert := assert.New(t)
 	observedZapCore, observedLogs := observer.New(zap.DebugLevel)
 	observedLogger := zap.New(observedZapCore)
 
