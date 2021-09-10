@@ -1,8 +1,8 @@
 package main
 
 import (
-	ero "go-utils/utils/error"
-	"go-utils/utils/logger"
+	ero "github.com/phamtai97/go-utils/utils/error"
+	"github.com/phamtai97/go-utils/utils/logger"
 
 	"go.uber.org/zap"
 )

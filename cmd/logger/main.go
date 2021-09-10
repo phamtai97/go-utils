@@ -3,7 +3,8 @@ package main
 import (
 	"errors"
 	"fmt"
-	"go-utils/utils/logger"
+
+	"github.com/phamtai97/go-utils/utils/logger"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
