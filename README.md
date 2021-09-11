@@ -1,5 +1,7 @@
 # go-utils
-- [go-utils](#go-utils)
+[![Go Reference](https://pkg.go.dev/badge/github.com/phamtai97/go-utils.svg)](https://pkg.go.dev/github.com/phamtai97/go-utils)
+
+## Table of contents
   - [1. Overview](#1-overview)
   - [2. Utils package](#2-utils-package)
     - [2.1 logger](#21-logger)
