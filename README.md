@@ -89,3 +89,4 @@ func main() {
 ```
 
 - Detailed examples can be see [here](cmd/error/main.go).
+
