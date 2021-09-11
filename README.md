@@ -9,18 +9,17 @@
 ## 1. Overview
 In my free time, I will learn new knowledge about Golang and make notes on this project, or more simply, I will write my own components that can be reused for many different projects. This helped me review my knowledge of Golang as well as gain more experience on how to use this language.
 
-## 2. Utils package
-### [2.1 logger](./utils/logger/logger.go) 
-- I have wrapped the [zap](https://github.com/uber-go/zap) library for easy use in projects. Why zap? Because it is very [fast](https://github.com/uber-go/zap#performance).
-- How to use? 
-- Fisrtly, we install zap package.
+## 2. Install
+- Run command `go get`.
 
 ```sh
-# Install zap package
-go get -u go.uber.org/zap
+go get github.com/phamtai97/go-utils
 ```
-
-- Then, we only need to create it once and use it anywhere in the project. For example:
+## 3. Utils package
+### [3.1 logger](./utils/logger/logger.go) 
+- I have wrapped the [zap](https://github.com/uber-go/zap) library for easy use in projects. Why zap? Because it is very [fast](https://github.com/uber-go/zap#performance).
+- How to use?
+- We only need to create it once and use it anywhere in the project. For example:
 
 ```go
 ...
@@ -49,17 +48,10 @@ func main(){
 
 - Detailed examples can be see [here](cmd/logger/main.go).
 
-### [2.2 error](./utils/error/error.go)
+### [3.2 error](./utils/error/error.go)
 - This is a simple way to create errors in the project. It uses the [github.com/pkg/errors](https://github.com/pkg/errors) package as the core.
 - How to use?
-- Fisrtly, we install error package.
-  
-```sh
-# Install error package
-go get github.com/pkg/errors
-```
-
-- Now, we can new error and use it. For example:
+- We can new error and use it. For example:
 
 ```go
 ...
