@@ -1,4 +1,4 @@
-// Package provides a way to create error wrapper.
+// Package ero provides a way to create error wrapper.
 //
 // Example Usage
 //

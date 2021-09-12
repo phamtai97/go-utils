@@ -1,4 +1,4 @@
-// Package provides simple utils that help us quickly build projects. Currently, there are the following packages:
+// Package utils provides simple utils that help us quickly build projects. Currently, there are the following packages:
 //
 // logger: Package provides a way to create global logger.
 //

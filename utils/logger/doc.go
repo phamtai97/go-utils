@@ -1,4 +1,4 @@
-// Package provides a way to create global logger. We only need to create it once and use it anywhere in the project.
+// Package logger provides a way to create global logger. We only need to create it once and use it anywhere in the project.
 //
 // Example Usage
 //
