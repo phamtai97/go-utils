@@ -34,7 +34,7 @@ func ConvertCurrentLocalTimeToString(format string) string {
 	return GetCurrentLocalTime().Format(format)
 }
 
-// ConvertMillisecondsToString converts the milliseconds to the string wiht the specific format.
+// ConvertMillisecondsToString converts the milliseconds to the string with the specific format.
 func ConvertMillisecondsToString(millis int64, format string) string {
 	return ConvertMillisecondsToLocalTime(millis).Format(format)
 }
