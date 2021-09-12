@@ -27,38 +27,38 @@ func main() {
 	yyyymmdd := datetime.ConvertMillisecondsToString(millis, datetime.YYYY_MM_DD)
 	logger.Info("Convert milliseconds to format YYYY-MM-DD", zap.String("value", yyyymmdd))
 
-	yyyymmdd_hhmmss := datetime.ConvertMillisecondsToString(millis, datetime.YYYY_MM_DD_HH_MM_SS)
-	logger.Info("Convert milliseconds to format YYYY-MM-DD HH:mm:ss", zap.String("value", yyyymmdd_hhmmss))
+	yyyymmddHhmmss := datetime.ConvertMillisecondsToString(millis, datetime.YYYY_MM_DD_HH_MM_SS)
+	logger.Info("Convert milliseconds to format YYYY-MM-DD HH:mm:ss", zap.String("value", yyyymmddHhmmss))
 
-	yyyymmdd_hhmmss_sss := datetime.ConvertMillisecondsToString(millis, datetime.YYYY_MM_DD_HH_MM_SS_SSS)
-	logger.Info("Convert milliseconds to format YYYY-MM-DD HH:mm:ss.SSS", zap.String("value", yyyymmdd_hhmmss_sss))
+	yyyymmddHhmmssSss := datetime.ConvertMillisecondsToString(millis, datetime.YYYY_MM_DD_HH_MM_SS_SSS)
+	logger.Info("Convert milliseconds to format YYYY-MM-DD HH:mm:ss.SSS", zap.String("value", yyyymmddHhmmssSss))
 
 	ddmmyyyy := datetime.ConvertMillisecondsToString(millis, datetime.DD_MM_YYYY)
 	logger.Info("Convert milliseconds to format DD-MM-YYYY", zap.String("value", ddmmyyyy))
 
-	ddmmyyyy_hhmmss := datetime.ConvertMillisecondsToString(millis, datetime.DD_MM_YYYY_HH_MM_SS)
-	logger.Info("Convert milliseconds to format DD-MM-YYYY HH:mm:ss", zap.String("value", ddmmyyyy_hhmmss))
+	ddmmyyyyHhmmss := datetime.ConvertMillisecondsToString(millis, datetime.DD_MM_YYYY_HH_MM_SS)
+	logger.Info("Convert milliseconds to format DD-MM-YYYY HH:mm:ss", zap.String("value", ddmmyyyyHhmmss))
 
-	ddmmyyyy_hhmmss_sss := datetime.ConvertMillisecondsToString(millis, datetime.DD_MM_YYYY_HH_MM_SS_SSS)
-	logger.Info("Convert milliseconds to format DD-MM-YYYY HH:mm:ss.SSS", zap.String("value", ddmmyyyy_hhmmss_sss))
+	ddmmyyyyHhmmssSss := datetime.ConvertMillisecondsToString(millis, datetime.DD_MM_YYYY_HH_MM_SS_SSS)
+	logger.Info("Convert milliseconds to format DD-MM-YYYY HH:mm:ss.SSS", zap.String("value", ddmmyyyyHhmmssSss))
 
 	// Convert string format to millisecond
 	millis, _ = datetime.ConvertStringToMilliseconds(yyyymmdd, datetime.YYYY_MM_DD)
 	logger.Info("Convert string format YYYY-MM-DD to millisecond", zap.Int64("value", millis))
 
-	millis, _ = datetime.ConvertStringToMilliseconds(yyyymmdd_hhmmss, datetime.YYYY_MM_DD_HH_MM_SS)
+	millis, _ = datetime.ConvertStringToMilliseconds(yyyymmddHhmmss, datetime.YYYY_MM_DD_HH_MM_SS)
 	logger.Info("Convert string format YYYY-MM-DD HH:mm:ss to millisecond", zap.Int64("value", millis))
 
-	millis, _ = datetime.ConvertStringToMilliseconds(yyyymmdd_hhmmss_sss, datetime.YYYY_MM_DD_HH_MM_SS_SSS)
+	millis, _ = datetime.ConvertStringToMilliseconds(yyyymmddHhmmssSss, datetime.YYYY_MM_DD_HH_MM_SS_SSS)
 	logger.Info("Convert string format YYYY-MM-DD HH:mm:ss.SSS to millisecond", zap.Int64("value", millis))
 
 	millis, _ = datetime.ConvertStringToMilliseconds(ddmmyyyy, datetime.DD_MM_YYYY)
 	logger.Info("Convert string format DD-MM-YYYY to millisecond", zap.Int64("value", millis))
 
-	millis, _ = datetime.ConvertStringToMilliseconds(ddmmyyyy_hhmmss, datetime.DD_MM_YYYY_HH_MM_SS)
+	millis, _ = datetime.ConvertStringToMilliseconds(ddmmyyyyHhmmss, datetime.DD_MM_YYYY_HH_MM_SS)
 	logger.Info("Convert string format DD-MM-YYYY HH:mm:ss to millisecond", zap.Int64("value", millis))
 
-	millis, _ = datetime.ConvertStringToMilliseconds(ddmmyyyy_hhmmss_sss, datetime.DD_MM_YYYY_HH_MM_SS_SSS)
+	millis, _ = datetime.ConvertStringToMilliseconds(ddmmyyyyHhmmssSss, datetime.DD_MM_YYYY_HH_MM_SS_SSS)
 	logger.Info("Convert string format DD-MM-YYYY HH:mm:ss.SSS to millisecond", zap.Int64("value", millis))
 
 	// other functions
