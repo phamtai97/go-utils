@@ -62,8 +62,8 @@
 //
 // 		millis, _ = datetime.ConvertStringToMilliseconds(ddmmyyyy_hhmmss_sss, datetime.DD_MM_YYYY_HH_MM_SS_SSS)
 // 		logger.Info("Convert string format DD-MM-YYYY HH:mm:ss.SSS to millisecond", zap.Int64("value", millis))
-
-// 		// other functions
+//
+// 		// Other functions
 // 		logger.Info("Year", zap.Int("value", datetime.GetYear()))
 // 		logger.Info("Day of year", zap.Int("value", datetime.GetDayOfYear()))
 // 		logger.Info("Day of month", zap.Int("value", datetime.GetDayOfMonth()))
