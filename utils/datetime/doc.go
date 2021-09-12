@@ -1,7 +1,8 @@
 // Package provides features for working with datetime
 //
-// For example
-
+// Example Usage
+//
+// The following is a complete example using datetime package
 // 	import (
 // 		"time"
 //

@@ -1,7 +1,8 @@
-// Package provides a way to create logger. We only need to create it once and use it anywhere in the project.
+// Package provides a way to create global logger. We only need to create it once and use it anywhere in the project.
 //
-// For example Usage
+// Example Usage
 //
+// The following is a complete example using logger package
 // 	import (
 // 		"errors"
 // 		"fmt"

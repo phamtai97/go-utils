@@ -1,7 +1,8 @@
-// Package provides a way to create errors.
+// Package provides a way to create error wrapper.
 //
-// For example Usage
+// Example Usage
 //
+// The following is a complete example using ero package
 // 	import (
 // 		ero "github.com/phamtai97/go-utils/utils/error"
 // 		"github.com/phamtai97/go-utils/utils/logger"
