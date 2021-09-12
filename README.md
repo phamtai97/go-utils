@@ -82,3 +82,50 @@ func main() {
 
 - Detailed examples can be see [here](cmd/error/main.go).
 
+### [3.3 datetime](./utils/datetime/datetime.go)
+- Working with Datetime in programming is inevitable. I provide a simple enough package to play with Datetime in Golang.
+- How to use?
+- It is easy.
+
+```go
+func main() {
+    logger.InitProduction("")
+
+    // Convert current milliseconds to different formats
+    logger.Info("Convert current milliseconds to format YYYY-MM-DD", zap.String("value", datetime.ConvertCurrentLocalTimeToString(datetime.YYYY_MM_DD)))
+    logger.Info("Convert current milliseconds to format YYYY-MM-DD HH:mm:ss", zap.String("value", datetime.ConvertCurrentLocalTimeToString(datetime.YYYY_MM_DD_HH_MM_SS)))
+    logger.Info("Convert current milliseconds to format YYYY-MM-DD HH:mm:ss.SSS", zap.String("value", datetime.ConvertCurrentLocalTimeToString(datetime.YYYY_MM_DD_HH_MM_SS_SSS)))
+    logger.Info("Convert current milliseconds to format DD-MM-YYYY", zap.String("value", datetime.ConvertCurrentLocalTimeToString(datetime.DD_MM_YYYY)))
+    logger.Info("Convert current milliseconds to format DD-MM-YYYY HH:mm:ss", zap.String("value", datetime.ConvertCurrentLocalTimeToString(datetime.DD_MM_YYYY_HH_MM_SS)))
+    logger.Info("Convert current milliseconds to format DD-MM-YYYY HH:mm:ss.SSS", zap.String("value", datetime.ConvertCurrentLocalTimeToString(datetime.DD_MM_YYYY_HH_MM_SS_SSS)))
+
+    // Get current millisenconds
+    currMillis := datetime.GetCurrentMiliseconds()
+    logger.Info("Current milliseconds", zap.Int64("value", millis))
+
+    // Convert milliseconds to specific string
+    ddmmyyyy_hhmmss_sss := datetime.ConvertMillisecondsToString(currMillis, datetime.DD_MM_YYYY_HH_MM_SS_SSS)
+    logger.Info("Convert milliseconds to format DD-MM-YYYY HH:mm:ss.SSS", zap.String("value", ddmmyyyy_hhmmss_sss))
+
+    // Convert specific string to milliseconds
+    millis, err := datetime.ConvertStringToMilliseconds("2021-09-09 09:09:09.999", datetime.YYYY_MM_DD_HH_MM_SS_SSS)
+    if err != nil{
+        logger.Error("Failed to convert", zap.Error(err))
+    }
+    logger.Info("Convert string format YYYY-MM-DD HH:mm:ss.SSS to millisecond", zap.Int64("value", millis))
+
+    // other functions
+    logger.Info("Start local time of year", zap.Int64("value", datetime.ConvertLocalTimeToMilliseconds(datetime.GetStartLocalTimeOfYear())))
+    logger.Info("End local time of year", zap.Int64("value", datetime.ConvertLocalTimeToMilliseconds(datetime.GetEndLocalTimeOfYear())))
+    logger.Info("Start local time of month", zap.Int64("value", datetime.ConvertLocalTimeToMilliseconds(datetime.GetStartLocalTimeOfMonth())))
+    logger.Info("End local time of month", zap.Int64("value", datetime.ConvertLocalTimeToMilliseconds(datetime.GetEndLocalTimeOfMonth())))
+    logger.Info("Start local time of day", zap.Int64("value", datetime.ConvertLocalTimeToMilliseconds(datetime.GetStartLocalTimeOfDay())))
+    logger.Info("End local time of day", zap.Int64("value", datetime.ConvertLocalTimeToMilliseconds(datetime.GetEndLocalTimeOfDay())))
+    logger.Info("Start local time of time", zap.Int64("value", datetime.ConvertLocalTimeToMilliseconds(datetime.GetStartLocalTimeOfTime(time.Now()))))
+    logger.Info("Start local time of time", zap.Int64("value", datetime.ConvertLocalTimeToMilliseconds(datetime.GetEndLocalTimeOfTime(time.Now()))))
+    logger.Info("Get before local time of time", zap.Int64("value", datetime.ConvertLocalTimeToMilliseconds(datetime.GetBeforeLocalTimeOfTime(time.Now(), 9, true))))
+    logger.Info("Get after local time of time", zap.Int64("value", datetime.ConvertLocalTimeToMilliseconds(datetime.GetAfterLocalTimeOfTime(time.Now(), 9, false))))
+}
+```
+
+- Detailed examples can be see [here](cmd/datetime/main.go).

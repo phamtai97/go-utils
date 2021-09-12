@@ -258,6 +258,7 @@ func TestLogger_Parallel_Success(t *testing.T) {
 
 func BenchmarkLoggerInfo(b *testing.B) {
 	Init(NewDefaultConfig())
+	b.ReportAllocs()
 	b.ResetTimer()
 	b.RunParallel(func(pb *testing.PB) {
 		for pb.Next() {

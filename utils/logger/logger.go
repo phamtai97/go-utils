@@ -12,18 +12,25 @@ import (
 )
 
 const (
+	// DefaultLogFileSizeInMB Default log file size with Megabyte unit.
 	DefaultLogFileSizeInMB = 512
 )
 
 var globalLogger atomic.Value
 
+// Level map between string level with zapcore level.
 type Level string
 
 const (
+	// DEBUG logs.
 	DEBUG Level = "DEBUG"
-	INFO  Level = "INFO"
-	WARN  Level = "WARN"
+	// INFO level is the default logging.
+	INFO Level = "INFO"
+	// WARN level logs are more important than Info.
+	WARN Level = "WARN"
+	// ERROR logs are high-priority.
 	ERROR Level = "ERROR"
+	// FATAL log message and then calls os.Exit(1).
 	FATAL Level = "FATAL"
 )
 
@@ -35,11 +42,13 @@ var levelMap = map[Level]zapcore.LevelEnabler{
 	FATAL: zapcore.FatalLevel,
 }
 
+// Config allows users to configure log level and log file.
 type Config struct {
 	Level         Level
 	FileLogConfig FileLogConfig
 }
 
+// FileLogConfig allows users to configure detail log file such as file path, max size of file, max file to backup,....
 type FileLogConfig struct {
 	IsUseFile  bool
 	FilePath   string
@@ -49,6 +58,7 @@ type FileLogConfig struct {
 	Compress   bool
 }
 
+// NewDefaultConfig returns the default config with INFO level and log to console.
 func NewDefaultConfig() Config {
 	return Config{
 		Level: INFO,
@@ -58,6 +68,7 @@ func NewDefaultConfig() Config {
 	}
 }
 
+// NewProductionConfig returns the production config with INFO level.
 func NewProductionConfig(isUseFile bool, filePath string) Config {
 	return Config{
 		Level: INFO,
@@ -72,6 +83,7 @@ func NewProductionConfig(isUseFile bool, filePath string) Config {
 	}
 }
 
+// Init creates the global logger that is used everywhere in project with your config.
 func Init(cfg Config) error {
 	if err := validateConfig(cfg); err != nil {
 		return err
@@ -89,6 +101,7 @@ func Init(cfg Config) error {
 	return nil
 }
 
+// InitProduction creates the global logger that is used everywhere in project with production config logger.
 func InitProduction(filePath string) error {
 	isUseFile := false
 	if len(filePath) > 0 {
@@ -98,26 +111,32 @@ func InitProduction(filePath string) error {
 	return Init(NewProductionConfig(isUseFile, filePath))
 }
 
+// Sync flushs any buffered log entries. It should be call before program exit.
 func Sync() error {
 	return getGlobalLog().Sync()
 }
 
+// Debug logs a message at Debug level.
 func Debug(msg string, fields ...zap.Field) {
 	getGlobalLog().Debug(msg, fields...)
 }
 
+// Info logs a message at Info level.
 func Info(msg string, fields ...zap.Field) {
 	getGlobalLog().Info(msg, fields...)
 }
 
+// Error logs a message at Error level.
 func Error(msg string, fields ...zap.Field) {
 	getGlobalLog().Error(msg, fields...)
 }
 
+// Warn logs a message at Warn level.
 func Warn(msg string, fields ...zap.Field) {
 	getGlobalLog().Warn(msg, fields...)
 }
 
+// Fatal logs a message at Fatal level.
 func Fatal(msg string, fields ...zap.Field) {
 	getGlobalLog().Fatal(msg, fields...)
 }

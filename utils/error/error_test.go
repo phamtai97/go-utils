@@ -258,6 +258,7 @@ func TestIs_DifferentError_NotIs(t *testing.T) {
 }
 
 func BenchmarkCreateErrorWrapper(b *testing.B) {
+	b.ReportAllocs()
 	b.ResetTimer()
 
 	b.RunParallel(func(pb *testing.PB) {
@@ -268,6 +269,7 @@ func BenchmarkCreateErrorWrapper(b *testing.B) {
 }
 
 func BenchmarkCreateErrorWrapperf(b *testing.B) {
+	b.ReportAllocs()
 	b.ResetTimer()
 
 	b.RunParallel(func(pb *testing.PB) {
@@ -278,6 +280,7 @@ func BenchmarkCreateErrorWrapperf(b *testing.B) {
 }
 
 func BenchmarkAddStackTrace(b *testing.B) {
+	b.ReportAllocs()
 	b.ResetTimer()
 	err := New("Benchmark create error")
 
@@ -289,6 +292,7 @@ func BenchmarkAddStackTrace(b *testing.B) {
 }
 
 func BenchmarkAddContext(b *testing.B) {
+	b.ReportAllocs()
 	b.ResetTimer()
 	err := New("Benchmark create error")
 
@@ -300,6 +304,7 @@ func BenchmarkAddContext(b *testing.B) {
 }
 
 func BenchmarkGetRootCause(b *testing.B) {
+	b.ReportAllocs()
 	b.ResetTimer()
 	err := New("Benchmark create error")
 	errA := err.AddStackTrace("Component A called")
@@ -313,6 +318,7 @@ func BenchmarkGetRootCause(b *testing.B) {
 }
 
 func BenchmarkGetDetail(b *testing.B) {
+	b.ReportAllocs()
 	b.ResetTimer()
 	err := New("Benchmark create error")
 
@@ -324,6 +330,7 @@ func BenchmarkGetDetail(b *testing.B) {
 }
 
 func BenchmarkIs(b *testing.B) {
+	b.ReportAllocs()
 	b.ResetTimer()
 	errA := New("Benchmark A create error")
 	errB := New("Benchmark B create error")
