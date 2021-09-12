@@ -1,4 +1,4 @@
-// The package provides features for working with datetime
+// Package provides features for working with datetime
 //
 // For example
 

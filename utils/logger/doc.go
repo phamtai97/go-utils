@@ -1,4 +1,4 @@
-// The package provides a way to create logger. We only need to create it once and use it anywhere in the project.
+// Package provides a way to create logger. We only need to create it once and use it anywhere in the project.
 //
 // For example Usage
 //

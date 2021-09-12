@@ -1,4 +1,4 @@
-// The package provides a way to create errors.
+// Package provides a way to create errors.
 //
 // For example Usage
 //
