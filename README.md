@@ -2,10 +2,14 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/phamtai97/go-utils.svg)](https://pkg.go.dev/github.com/phamtai97/go-utils)
 
 ## Table of contents
+- [go-utils](#go-utils)
+  - [Table of contents](#table-of-contents)
   - [1. Overview](#1-overview)
-  - [2. Utils package](#2-utils-package)
-    - [2.1 logger](#21-logger)
-    - [2.2 error](#22-error)
+  - [2. Install](#2-install)
+  - [3. Utils package](#3-utils-package)
+    - [3.1 logger](#31-logger)
+    - [3.2 error](#32-error)
+    - [3.3 datetime](#33-datetime)
 ## 1. Overview
 In my free time, I will learn new knowledge about Golang and make notes on this project, or more simply, I will write my own components that can be reused for many different projects. This helped me review my knowledge of Golang as well as gain more experience on how to use this language.
 
