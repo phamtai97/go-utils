@@ -1,5 +1,5 @@
 # go-utils
-[![Go Reference](https://pkg.go.dev/badge/github.com/phamtai97/go-utils.svg)](https://pkg.go.dev/github.com/phamtai97/go-utils)
+[![Go Report Card](https://goreportcard.com/badge/github.com/phamtai97/go-utils)](https://goreportcard.com/report/github.com/phamtai97/go-utils) [![Go Reference](https://pkg.go.dev/badge/github.com/phamtai97/go-utils.svg)](https://pkg.go.dev/github.com/phamtai97/go-utils)
 
 ## Table of contents
 - [go-utils](#go-utils)
