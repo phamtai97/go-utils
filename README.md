@@ -10,6 +10,7 @@
     - [3.1 logger](#31-logger)
     - [3.2 error](#32-error)
     - [3.3 datetime](#33-datetime)
+    - [3.4 Configuration](#34-configuration)
 ## 1. Overview
 In my free time, I will learn new knowledge about Golang and make notes on this project, or more simply, I will write my own components that can be reused for many different projects. This helped me review my knowledge of Golang as well as gain more experience on how to use this language.
 
@@ -133,3 +134,36 @@ func main() {
 ```
 
 - Detailed examples can be see [here](cmd/datetime/main.go).
+
+### [3.4 Configuration](./utils/config/config.go)
+- Most applications need configuration to run (except very simple ones). We can manage configuration by file such as yaml, json file. The package provides a way to load configuration from yaml and json files and parse it into an object.
+- How to use?
+- Let's go.
+
+```go
+func main() {
+    logger.InitProduction("")
+    serviceConfig := ServiceConfig{}
+
+    // Load config from yaml file
+    if err := config.LoadYaml(&serviceConfig, "dev.yaml"); err != nil {
+        logger.Fatal("Failed to load config", zap.Error(err))
+    }
+
+    // We can provide path of config by flag to load config
+    if err := config.LoadYamlByFlag(&serviceConfig, "cfgPath"); err != nil {
+        logger.Fatal("Failed to load config", zap.Error(err))
+    }
+
+    // Load config from json file
+    if err := config.LoadJson(&serviceConfig, "dev.json"); err != nil {
+        logger.Fatal("Failed to load config", zap.Error(err))
+    }
+
+    // If you want omit hotkeys such as token, password,...
+    if err := config.Print(serviceConfig, "Token", "Password"); err != nil {
+        logger.Fatal("Failed to print config", zap.Error(err))
+    }
+}
+```
+- Detailed examples can be see [here](./cmd/config/main.go).

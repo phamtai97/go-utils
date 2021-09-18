@@ -1,3 +1,4 @@
+// Package main contains examples of how to use the logger package
 package main
 
 import (

@@ -1,3 +1,4 @@
+// Package main contains examples of how to use the datetime package
 package main
 
 import (

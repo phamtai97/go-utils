@@ -1,0 +1,25 @@
+{
+  "bootstrap": {
+    "env": "DEV",
+    "token": "xyz1234567890",
+    "password": ["abc", "123"],
+    "workerPoolSize": 20,
+    "enabledJob": false
+  },  
+  "datasource": {
+    "accountDS": {
+      "host": "9.9.9.9",
+      "port": 9090,
+      "username": "ajpham97",
+      "password": "abc@123",
+      "tableName": ["Test1", "Test2", "Test3"]
+    },    
+    "systemDS": {
+      "host": "8.8.8.8",
+      "port": 8080,
+      "username": "ajpham97",
+      "password": "123@abc",
+      "tableName": ["Test4", "Test5", "Test6"]
+    }
+  }
+}
