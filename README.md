@@ -10,7 +10,7 @@
     - [3.1 logger](#31-logger)
     - [3.2 error](#32-error)
     - [3.3 datetime](#33-datetime)
-    - [3.4 Configuration](#34-configuration)
+    - [3.4 config](#34-config)
 ## 1. Overview
 In my free time, I will learn new knowledge about Golang and make notes on this project, or more simply, I will write my own components that can be reused for many different projects. This helped me review my knowledge of Golang as well as gain more experience on how to use this language.
 
@@ -135,7 +135,7 @@ func main() {
 
 - Detailed examples can be see [here](cmd/datetime/main.go).
 
-### [3.4 Configuration](./utils/config/config.go)
+### [3.4 config](./utils/config/config.go)
 - Most applications need configuration to run (except very simple ones). We can manage configuration by file such as yaml, json file. The package provides a way to load configuration from yaml and json files and parse it into an object.
 - How to use?
 - Let's go.
