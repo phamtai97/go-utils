@@ -170,7 +170,7 @@ func main() {
 - Detailed examples can be see [here](./cmd/config/main.go).
 
 ### [3.5 conv](./utils/convertor/convertor.go)
-- How to convert numbers and strings? How to convert string to number? It's simple because there's a convertor package.
+- How to convert numbers and strings? How to convert string to number? It's simple because there's a convertor package.
 - I use [strconv](https://pkg.go.dev/strconv) for conv package.
 - It includes the following data types: int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64, float32, float64, bool.
 - How to use?
