@@ -5,15 +5,41 @@ import (
 	"flag"
 	"io/ioutil"
 	"reflect"
+	"strings"
 
+	ero "github.com/phamtai97/go-utils/utils/error"
 	"github.com/phamtai97/go-utils/utils/logger"
 	"go.uber.org/zap"
 	"gopkg.in/yaml.v3"
 )
 
-// LoadYaml loads configuration from specific config path.
-func LoadYaml(config interface{}, configPath string) error {
-	buf, err := ioutil.ReadFile(configPath)
+// Load loads configuration from specific config path.
+func Load(config interface{}, configPath string) error {
+	switch fileExtension(configPath) {
+	case "yaml":
+		return loadYaml(config, configPath)
+	case "json":
+		return loadJson(config, configPath)
+	default:
+		return ero.Newf("Can not support load file %s", configPath)
+	}
+}
+
+// LoadByFlag loads the configuration from the env path.
+func LoadByFlag(config interface{}, flagPath string) error {
+	var filePath string
+	flag.StringVar(&filePath, flagPath, "config.yaml", "Path of config file")
+	flag.Parse()
+
+	return Load(config, filePath)
+}
+
+func readFile(configPath string) ([]byte, error) {
+	return ioutil.ReadFile(configPath)
+}
+
+func loadYaml(config interface{}, configPath string) error {
+	buf, err := readFile(configPath)
 	if err != nil {
 		return err
 	}
@@ -21,18 +47,8 @@ func LoadYaml(config interface{}, configPath string) error {
 	return yaml.Unmarshal(buf, config)
 }
 
-// LoadYamlByFlag loads the configuration from the env path.
-func LoadYamlByFlag(config interface{}, flagPath string) error {
-	var filePath string
-	flag.StringVar(&filePath, flagPath, "config.yaml", "Path of config file")
-	flag.Parse()
-
-	return LoadYaml(config, filePath)
-}
-
-// LoadJson loads configuration from specific config path.
-func LoadJson(config interface{}, configPath string) error {
-	buf, err := ioutil.ReadFile(configPath)
+func loadJson(config interface{}, configPath string) error {
+	buf, err := readFile(configPath)
 	if err != nil {
 		return err
 	}
@@ -40,13 +56,9 @@ func LoadJson(config interface{}, configPath string) error {
 	return json.Unmarshal(buf, config)
 }
 
-// LoadJsonlByFlag loads the configuration from the env path.
-func LoadJsonlByFlag(config interface{}, flagPath string) error {
-	var filePath string
-	flag.StringVar(&filePath, flagPath, "config.json", "Path of config file")
-	flag.Parse()
-
-	return LoadJson(config, filePath)
+func fileExtension(filePath string) string {
+	segments := strings.Split(filePath, ".")
+	return segments[len(segments)-1]
 }
 
 // Print to config

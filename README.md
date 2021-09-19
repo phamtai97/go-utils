@@ -146,17 +146,17 @@ func main() {
     serviceConfig := ServiceConfig{}
 
     // Load config from yaml file
-    if err := config.LoadYaml(&serviceConfig, "dev.yaml"); err != nil {
+    if err := config.Load(&serviceConfig, "dev.yaml"); err != nil {
         logger.Fatal("Failed to load config", zap.Error(err))
     }
 
     // We can provide path of config by flag to load config
-    if err := config.LoadYamlByFlag(&serviceConfig, "cfgPath"); err != nil {
+    if err := config.LoadByFlag(&serviceConfig, "cfgPath"); err != nil {
         logger.Fatal("Failed to load config", zap.Error(err))
     }
 
     // Load config from json file
-    if err := config.LoadJson(&serviceConfig, "dev.json"); err != nil {
+    if err := config.Load(&serviceConfig, "dev.json"); err != nil {
         logger.Fatal("Failed to load config", zap.Error(err))
     }
 

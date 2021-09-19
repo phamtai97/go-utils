@@ -42,13 +42,13 @@ func main() {
 	serviceConfig := ServiceConfig{}
 
 	// We can provide path of config by flag to load config
-	// config.LoadYamlByFlag(&serviceConfig, "cfgPath")
-	if err := config.LoadYaml(&serviceConfig, "dev.yaml"); err != nil {
+	// config.LoadByFlag(&serviceConfig, "cfgPath")
+	if err := config.Load(&serviceConfig, "dev.yaml"); err != nil {
 		logger.Fatal("Failed to load config", zap.Error(err))
 	}
 
 	// Load config from json file
-	// if err := config.LoadJson(&serviceConfig, "dev.json"); err != nil {
+	// if err := config.Load(&serviceConfig, "dev.json"); err != nil {
 	// 	logger.Fatal("Failed to load config", zap.Error(err))
 	// }
 
