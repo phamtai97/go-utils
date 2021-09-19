@@ -11,6 +11,7 @@
     - [3.2 error](#32-error)
     - [3.3 datetime](#33-datetime)
     - [3.4 config](#34-config)
+    - [3.5 conv](#35-conv)
 ## 1. Overview
 In my free time, I will learn new knowledge about Golang and make notes on this project, or more simply, I will write my own components that can be reused for many different projects. This helped me review my knowledge of Golang as well as gain more experience on how to use this language.
 
@@ -167,3 +168,27 @@ func main() {
 }
 ```
 - Detailed examples can be see [here](./cmd/config/main.go).
+
+### [3.5 conv](./utils/convertor/convertor.go)
+- How to convert numbers and strings? How to convert string to number? It's simple because there's a convertor package.
+- I use [strconv](https://pkg.go.dev/strconv) for conv package.
+- It includes the following data types: int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64, float32, float64, bool.
+- How to use?
+- Don't go to google looking for ways to convert anymore.
+
+```go
+func main() {
+    logger.InitProduction("")
+
+    numInt, err := conv.ConvertStringToInt("123456")
+    if err != nil {
+        logger.Fatal("Failed to convert string to int")
+    }
+    logger.Info("Convert string to int", zap.Int("Value", numInt))
+
+    strInt := conv.ConvertIntToString(123456)
+    logger.Info("Convert int to string", zap.String("Value", strUInt))
+}
+```
+
+- Detailed examples can be see [here](./cmd/convertor/main.go).
