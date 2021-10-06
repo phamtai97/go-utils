@@ -1,4 +1,4 @@
-// Package main contains examples of how to use the mysql of datbase package
+// Package main contains examples of how to use the mysql of database package
 package main
 
 import (
