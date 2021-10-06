@@ -5,14 +5,14 @@
 // The following is a complete example using mysql data source of database package
 // 	import (
 // 		"database/sql"
-//	
+//
 // 		"github.com/jmoiron/sqlx"
 // 		"github.com/phamtai97/go-utils/utils/datetime"
 // 		database "github.com/phamtai97/go-utils/utils/db"
 // 		"github.com/phamtai97/go-utils/utils/logger"
 // 		"go.uber.org/zap"
 // 	)
-//	
+//
 // 	// AccountDTO data transfer object
 // 	type AccountDTO struct {
 // 		ID          int64  `db:"id"`
@@ -24,10 +24,10 @@
 // 		CreatedTime int64  `db:"created_time"`
 // 		UpdatedTime int64  `db:"updated_time"`
 // 	}
-//	
+//
 // 	func main() {
 // 		logger.InitProduction("")
-//	
+//
 // 		config := database.MySQLConfig{
 // 			User:                      "dbgtest",
 // 			Password:                  "abc@123",
@@ -42,15 +42,15 @@
 // 			WriteTimeoutInMs:          3000,
 // 			DialConnectionTimeoutInMs: 3000,
 // 		}
-//	
+//
 // 		mysql, err := database.NewMySQLImpl(config)
 // 		if err != nil {
 // 			logger.Fatal("Failed to create mysql", zap.Error(err))
 // 		}
 // 		defer mysql.Disconnect()
-//	
+//
 // 		db := mysql.GetConnection().(*sqlx.DB)
-//	
+//
 // 		//
 // 		// Insert new account into DB
 // 		newAccount := AccountDTO{
@@ -62,19 +62,19 @@
 // 			CreatedTime: datetime.GetCurrentMiliseconds(),
 // 			UpdatedTime: datetime.GetCurrentMiliseconds(),
 // 		}
-//	
+//
 // 		resultInsert, err := db.Exec("INSERT INTO account (username, password, email, status, role, created_time, updated_time) VALUES (?, ?, ?, ?, ?, ?, ?)",
 // 			newAccount.Username, newAccount.Password, newAccount.Email, newAccount.Status, newAccount.Role, newAccount.CreatedTime, newAccount.UpdatedTime)
 // 		if err != nil {
 // 			logger.Fatal("Failed to insert new account", zap.Error(err))
 // 		}
-//	
+//
 // 		rowInserted, err := resultInsert.RowsAffected()
 // 		if err != nil {
 // 			logger.Fatal("Failed to insert new account", zap.Error(err))
 // 		}
 // 		logger.Info("Insert account successed", zap.Int64("Row affected", rowInserted))
-//	
+//
 // 		//
 // 		// Select accounts from DB
 // 		var accounts []AccountDTO
@@ -84,7 +84,7 @@
 // 			}
 // 		}
 // 		logger.Info("Query accounts", zap.Any("List account", accounts))
-//	
+//
 // 		//
 // 		// Select a account by username
 // 		var account AccountDTO
@@ -101,10 +101,11 @@
 // 		if err != nil {
 // 			logger.Fatal("Failed to update account", zap.Error(err))
 // 		}
-//	
+//
 // 		rowUpdated, err := resultUpdate.RowsAffected()
 // 		if err != nil {
 // 			logger.Fatal("Failed to update new account", zap.Error(err))
 // 		}
 // 		logger.Info("Update accounts successed", zap.Int64("Row affected", rowUpdated))
 // 	}
+package database
