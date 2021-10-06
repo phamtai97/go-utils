@@ -9,4 +9,6 @@
 // config: Package provides a way to load configuration from yaml and json files.
 //
 // conv: Package provides a string and number converter.
+//
+// database: Package database provides an interface Database that can be implemented by different data sources.
 package utils

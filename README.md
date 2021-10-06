@@ -12,6 +12,7 @@
     - [3.3 datetime](#33-datetime)
     - [3.4 config](#34-config)
     - [3.5 conv](#35-conv)
+    - [3.6 database](#36-database)
 ## 1. Overview
 In my free time, I will learn new knowledge about Golang and make notes on this project, or more simply, I will write my own components that can be reused for many different projects. This helped me review my knowledge of Golang as well as gain more experience on how to use this language.
 
@@ -192,3 +193,76 @@ func main() {
 ```
 
 - Detailed examples can be see [here](./cmd/convertor/main.go).
+
+### [3.6 database](./utils/db/database.go)
+- There are many libraries that support working with different databases. 
+- Using the Database interface and you can implement datasource packages such as mysql, postgresql.
+- Example: I use [sqlx](https://github.com/jmoiron/sqlx) to work with mysql and implement MySQLImpl struct.
+- How to use?
+- This is the most approachable I've ever done.
+  
+```go
+// AccountDTO data transfer object
+type AccountDTO struct {
+	ID          int64  `db:"id"`
+	Username    string `db:"username"`
+	Password    string `db:"password"`
+	Email       string `db:"email"`
+	Status      int    `db:"status"`
+	Role        string `db:"role"`
+	CreatedTime int64  `db:"created_time"`
+	UpdatedTime int64  `db:"updated_time"`
+}
+
+func main() {
+    logger.InitProduction("")
+
+    config := database.MySQLConfig{
+        User:                      "dbgtest",
+        Password:                  "abc@123",
+        Host:                      "10.30.17.173",
+        Port:                      4000,
+        DBName:                    "go_admin",
+        PoolName:                  "account_da",
+        PoolSize:                  10,
+        MaxIdleConns:              2,
+        ConnMaxLifetimeInMs:       10000,
+        ReadTimeoutInMs:           3000,
+        WriteTimeoutInMs:          3000,
+        DialConnectionTimeoutInMs: 3000,
+    }
+
+    mysql, err := database.NewMySQLImpl(config)
+    if err != nil {
+        logger.Fatal("Failed to create mysql", zap.Error(err))
+    }
+    defer mysql.Disconnect()
+
+    db := mysql.GetConnection().(*sqlx.DB)
+
+    //
+    // Insert new account into DB
+    newAccount := AccountDTO{
+        Username:    "AJPham",
+        Password:    "123@ajpham",
+        Email:       "go-util@gmail.com",
+        Status:      1,
+        Role:        "admin",
+        CreatedTime: datetime.GetCurrentMiliseconds(),
+        UpdatedTime: datetime.GetCurrentMiliseconds(),
+    }
+
+    resultInsert, err := db.Exec("INSERT INTO account (username, password, email, status, role, created_time, updated_time) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        newAccount.Username, newAccount.Password, newAccount.Email, newAccount.Status, newAccount.Role, newAccount.CreatedTime, newAccount.UpdatedTime)
+    if err != nil {
+        logger.Fatal("Failed to insert new account", zap.Error(err))
+    }
+
+    rowInserted, err := resultInsert.RowsAffected()
+    if err != nil {
+        logger.Fatal("Failed to insert new account", zap.Error(err))
+    }
+    logger.Info("Insert account successed", zap.Int64("Row affected", rowInserted))
+```
+
+- Detailed examples can be see [here](./cmd/db/main.go).
